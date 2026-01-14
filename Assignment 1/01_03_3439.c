@@ -3,7 +3,7 @@
 
 void fillptr(int *p,int i ){
     for(int j = 0 ; j < i ; j++){
-        p[j] = j+1;
+        *(p+j) = j+1;
     }
 }
 
