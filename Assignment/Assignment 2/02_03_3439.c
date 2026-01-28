@@ -71,6 +71,5 @@ int main(){
     insertHeadCir(&head,n);
 
     //
-
     printListCir(head);
 }

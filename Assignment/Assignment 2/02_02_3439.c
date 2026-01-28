@@ -65,5 +65,5 @@ int main(){
     insertHead(&head,n);
     //
     printf("%d",findNth(head,index));
-    //printList(head);
+
 }
