@@ -8,32 +8,43 @@ struct node {
 
 void printList(struct node *head){
     struct node *print = head;
-    while(print != NULL){
+    do {
         printf("%d ", print->data);
         print = print->next;
-    }
+    } while(print != head);  // ✓ ถูก
     printf("\n");
 }
 
 void insertHead(struct node **head , int data){
     struct node *newNode = (struct node*)malloc(sizeof(struct node));
-    newNode -> next = *head;
-    //
     newNode -> data = data;
-    *head = newNode;
+    
+    if(*head == NULL) {
+        newNode -> next = newNode;
+        *head = newNode;
+    } else {
+        struct node *current = *head;
+        do{
+            current = current->next;
+        }while(current -> next != *head);
+        newNode -> next = *head;
+        current -> next = newNode;
+        *head = newNode;
+    }
 }
 
 void insertEnd(struct node **head, int data){
     struct node *newNode = (struct node *)malloc(sizeof(struct node));
-    newNode -> next = NULL;
     newNode -> data = data;
     
     if(*head == NULL) {
         *head = newNode;
+        newNode -> next = newNode;
     }
     else{
         struct node *current = *head;
-        while(current->next != NULL) current = current -> next;
+        while(current->next != *head) current = current -> next;
+        newNode -> next = *head;
         current -> next = newNode;
     }
 }
