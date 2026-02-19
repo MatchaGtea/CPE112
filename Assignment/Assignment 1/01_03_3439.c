@@ -8,16 +8,23 @@ void fillptr(int *p,int i ){
 }
 
 int main(){
-    int i , n;
+    int i , n = 3;
     scanf("%d",&n);
+    //int ptr[3];
     int *ptr = malloc(n * sizeof(int));
     if(ptr == NULL){
         //Allocation failure
         return 1;
     }
     fillptr(ptr,n);
+
+    
     for(i = 0 ; i < n ; i++){
-        printf("%d ",ptr[i]);
+        scanf("%d",&ptr[i]);
+    }
+
+    for(i = 0 ; i < n ; i++){
+        printf("%p ",&ptr[i]);
     }
 
     free(ptr);
