@@ -16,7 +16,7 @@ void push(struct stack* stk,char value){
         printf("Stack Overflow\n");
         return;
     }
-    stk->arr[++stk->top] = value;
+    stk->arr[++stk->top] = value; // main
     printf("Pushed %d onto the stack\n", value);
 }
 
@@ -25,7 +25,7 @@ char pop(struct stack* stk){
         printf("Stack Underflow\n");
         return -1;
     }
-    char popped = stk ->arr[stk->top];
+    char popped = stk ->arr[stk->top]; // main
     stk->top--;
     return popped;
 }
@@ -35,7 +35,7 @@ char peek(struct stack* stk){
         printf("Stack is empty\n");
         return -1;
     }
-    return stk->arr[stk->top];
+    return stk->arr[stk->top]; // main
 }
 
 int main(){

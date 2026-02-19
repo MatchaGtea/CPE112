@@ -74,5 +74,5 @@ int main(){
         scanf("%d",&data);
         insertLast(&head,data);
     }
-    Printlist(head);
+    Printlist(&head);
 }

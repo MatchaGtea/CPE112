@@ -1,43 +1,26 @@
 #include <stdio.h>
+#include <ctype.h>
+#define MAX 20
+//Abcd  AABBCC // BBCC
 
-int isConsonant(char c) {
-    // แปลงเป็นพิมพ์เล็กโดยไม่ใช้ tolower
-    if (c >= 'A' && c <= 'Z') {
-        c = c + ('a' - 'A');
+int main(){
+    int i = 0,count = 0,temp = 0;
+    char str[MAX];
+    scanf("%s",str);
+    while(str[i] != '\0'){
+        str[i] = tolower(str[i]);
+        i++;
     }
-
-    // เช็กว่าเป็นตัวอักษร
-    if (c >= 'a' && c <= 'z') {
-        // ถ้าไม่ใช่สระ → เป็นพยัญชนะ
-        if (c!='a' && c!='e' && c!='i' && c!='o' && c!='u')
-            return 1;
-    }
-    return 0;
-}
-
-int longestConsonantSubstring(char str[]) {
-    int maxLen = 0;
-    int count = 0;
-    int i = 0;
-
-    while (str[i] != '\0') {
-        if (isConsonant(str[i])) {
-            count++;
-            if (count > maxLen)
-                maxLen = count;
-        } else {
+    i = 0 ;
+    while(str[i] != '\0'){
+        if(str[i] != 'a' && str[i] != 'e' && str[i] != 'i' && str[i] != 'o' && str[i] != 'u') count++;
+        else{
+            if(count > temp) temp = count;
             count = 0;
         }
         i++;
     }
+    if(count > temp) temp = count;  // Check the last sequence of consonants
+    printf("%d",temp);
 
-    return maxLen;
-}
-
-int main() {
-    char str[100];
-    scanf("%s", str);
-
-    printf("%d\n", longestConsonantSubstring(str));
-    return 0;
 }
