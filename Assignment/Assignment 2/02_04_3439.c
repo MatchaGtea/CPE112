@@ -20,7 +20,7 @@ void printListCir(struct node* head){
 
 
 void insertHeadCir(struct node **head, int data){
-    struct node *newNode = malloc(sizeof(struct node));
+    struct node *newNode = (struct node*)malloc(sizeof(struct node));
     newNode->data = data;
 
     if (*head == NULL) {
