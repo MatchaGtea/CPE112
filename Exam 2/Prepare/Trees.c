@@ -52,7 +52,7 @@ void postorder(Node* root){
     postorder(root->right);
     printf("%d ",root->key);
 }
-
+// 10 20 30 , root 20 , suc = 30
 void findSuccessor(Node* root , int key){
     Node* current = root;
     Node* successor = NULL;
@@ -77,6 +77,42 @@ void findSuccessor(Node* root , int key){
     }else{
         printf("successor = %d\n",successor->key);
     }
+}
+
+int countSingleChildNodes(Node* root){
+    if(root == NULL) return 0;
+
+    int count = 0;
+    if((root->left != NULL && root->right == NULL) || (root->left == NULL && root->right != NULL)){
+        count = 1;
+    }
+
+    return count 
+        + countSingleChildNodes(root->left) + countSingleChildNodes(root->right);
+}
+
+Node* deleteOneChile(Node* root , int key){
+    if(root == NULL) return NULL;
+
+    if(key < root->key){
+        root->left = deleteOneChile(root->left , key);
+    }else if(key > root->key){
+        root->right = deleteOneChile(root->right, key);
+    }else{
+        if(root->left == NULL && root->right != NULL){
+            Node* temp = root->right;
+            free(root);
+            return temp;
+        }
+        if(root->right == NULL && root->left != NULL){
+            Node* temp = root->left;
+            free(root);
+            return temp;
+        }
+
+        return root;
+    }
+    return root;
 }
 
 void solve(int n){

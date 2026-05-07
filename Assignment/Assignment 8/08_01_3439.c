@@ -41,17 +41,17 @@ int main()
     Graph *g = Graph_create(v);
     for (int i = 0; i < e; i++)
     {
-    int src, dest;
-    scanf("%d %d", &src, &dest);
-    Graph_addEdge(g, src, dest);
+        int src, dest;
+        scanf("%d %d", &src, &dest);
+        Graph_addEdge(g, src, dest);
     }
     for (int i = 0; i < v; i++)
     {
-    printf("[ ");
-    for(int j = 0;j < v; j++){
-    printf("%d ", g->adj[i][j]);
+        printf("[ ");
+        for(int j = 0;j < v; j++){
+        printf("%d ", g->adj[i][j]);
     }
-    printf("]\n");
+        printf("]\n");
     }
     free(g);
     return 0;
