@@ -52,25 +52,28 @@ void Graph_BFS(Graph *g , int s){
     }
 }
 
-void DFSearch(Graph *g, int s, bool visited[]){
+////DFS
+
+
+void DFSearch(Graph *g , int s , bool visited[]){
     visited[s] = true;
-    printf("%c ", s+65);
+    printf("%c ",s+65);
 
     for(int i = 0 ; i < g->V ; i++){
         if(g->adj[s][i] == true && visited[i] == false){
-            DFSearch(g, i, visited);
+            DFSearch(g,i,visited);
         }
     }
 }
 
-void Graph_DFS(Graph *g, int s){
+void Graph_DFS(Graph *g , int s){
     bool visited[MAX_VERTICES];
 
-    for(int i = 0 ; i < g->V ; i++){
+    for(int i = 0 ; i< g->V ; i++){
         visited[i] = false;
     }
 
-    DFSearch(g, s, visited);
+    DFSearch(g,s,visited);
 }
 
 int main(){
@@ -93,33 +96,26 @@ int main(){
     // free(g);
 
 
-    //BFS
-        int v, e;
-    scanf("%d %d", &v, &e);
+    // //BFS
+    //     int v, e;
+    // scanf("%d %d", &v, &e);
 
-    //Make a graph
-    Graph *g = Graph_create(v);
+    // //Make a graph
+    // Graph *g = Graph_create(v);
 
-    //Insert Edges
-    for (int i = 0; i < e; i++) {
-        int v, w;
-        scanf("%d %d", &v, &w);
-        Graph_addEdge(g, v, w);
-    }
+    // //Insert Edges
+    // for (int i = 0; i < e; i++) {
+    //     int v, w;
+    //     scanf("%d %d", &v, &w);
+    //     Graph_addEdge(g, v, w);
+    // }
 
-    int startVertex;
-    scanf("%d", &startVertex);
+    // int startVertex;
+    // scanf("%d", &startVertex);
+    // Graph_BFS(g, startVertex);
 
-    printf("BFS: ");
-    Graph_BFS(g, startVertex);
-    printf("\n");
+    // Graph_destroy(g);
 
-    printf("DFS: ");
-    Graph_DFS(g, startVertex);
-    printf("\n");
 
-    Graph_destroy(g);
-
-    
-    return 0;
+    // return 0;
 }

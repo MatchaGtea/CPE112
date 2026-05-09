@@ -22,11 +22,52 @@ Minimum cost: 6
 
 int minCostToConnectCities(int n, int edges[][3], int edgesSize)
 {
+    int adj[100][100] = {0};
+    int visited[100] = {0};
     int totalCost = 0;
+    int edgeCount = 0;
 
-    // TODO: choose Prim or Kruskal MST
-    // TODO: select n - 1 edges with minimum total cost
-    // TODO: if not all cities can be connected, return -1
+    for (int i = 0; i < edgesSize; i++)
+    {
+        int u = edges[i][0];
+        int v = edges[i][1];
+        int w = edges[i][2];
+
+        adj[u][v] = w;
+        adj[v][u] = w;
+    }
+
+    visited[0] = 1;
+
+    while (edgeCount < n - 1)
+    {
+        int minWeight = INT_MAX;
+        int nextCity = -1;
+
+        for (int u = 0; u < n; u++)
+        {
+            if (visited[u])
+            {
+                for (int v = 0; v < n; v++)
+                {
+                    if (!visited[v] && adj[u][v] != 0 && adj[u][v] < minWeight)
+                    {
+                        minWeight = adj[u][v];
+                        nextCity = v;
+                    }
+                }
+            }
+        }
+
+        if (nextCity == -1)
+        {
+            return -1;
+        }
+
+        visited[nextCity] = 1;
+        totalCost += minWeight;
+        edgeCount++;
+    }
 
     return totalCost;
 }
