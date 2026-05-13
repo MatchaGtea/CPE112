@@ -39,7 +39,7 @@ void quickSort(int arr[] ,int low ,int high){
 
 void swap(int *a ,int *b){
     int t = *a;
-    a* = *b;
+    *a = *b;
     *b = t;
 }
 
@@ -47,6 +47,6 @@ void swap(int *a ,int *b){
 int main(){
     int arr[MAX] = {10 ,5 ,6 ,4 ,3 ,2 ,7, 8 ,9 ,1};
     int size = sizeof(arr) / sizeof(arr[0]);
-
+    quickSort(arr,0,size-1);
     PrintList(arr);
 }
